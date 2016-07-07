@@ -18,3 +18,7 @@ $(document).ready(function(){
 function showContacts(){
 	setTimeout(function(){$('#pageContent').load('contacts.php',function(){$('#loaderImage').hide();})},1000);
 }
+
+$(document).on('click','.close-reveal-modal', function(){
+	$('.reveal-modal').foundation('reveal', 'close');
+});
