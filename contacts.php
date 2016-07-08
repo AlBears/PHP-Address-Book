@@ -126,10 +126,12 @@ $contacts = $db->resultset();
 											</form>
 									</div>
 								</li>
+								<li>
 								<form id="deleteContact" action="#" method="post">
 										<input type="hidden" name="id" value="<?php echo $contact->id; ?>" />
 										<input type="submit" class="delete-btn button tiny secondary alert" value="Delete" />
 								</form>
+							</li>
 							</ul>
 						</td>
 					</tr>
