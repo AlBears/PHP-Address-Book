@@ -38,7 +38,7 @@ $contacts = $db->resultset();
 								<li>
 									<a href="#" class="button tiny" data-reveal-id="editModal<?php echo $contact->id; ?>" data-contact-id="<?php echo $contact->id; ?>">Edit</a>
 									<div id = "editModal<?php echo $contact->id; ?>" data-cid="<?php echo $contact->id; ?>" class="reveal-modal editModal" data-reveal>
-										<h2>Add Contact</h2>
+										<h2>Edit Contact</h2>
 									<form id="editContact" action="#" method="post">
 											  <div class="row">
 												<div class="large-6 columns">
@@ -94,11 +94,16 @@ $contacts = $db->resultset();
 												<div class="large-4 columns">
 													<label>State
 													<select name="state">
-														<?php foreach($states as $key => $value):?>
-															<?php if($key == $contact->state):?>
-																<option value="<?php echo $key; ?>"<?php echo 'selected';?>><?php echo $value; ?></option>
-															<?php endif; ?>
-														<?php endforeach; ?>
+														<?php foreach($states as $key => $value) : ?>
+														<?php 
+														if($key == $contact->state){
+															$selected = 'selected';
+														} else {
+															$selected = '';
+														}
+														?>
+														<option value="<?php echo $key; ?>" <?php echo $selected; ?>><?php echo $value; ?></option>
+													    <?php endforeach; ?>
 													</select>
 												  </label>
 												</div>
@@ -121,7 +126,10 @@ $contacts = $db->resultset();
 											</form>
 									</div>
 								</li>
-								<li><a href="#" class="button tiny alert">Delete</a></li>
+								<form id="deleteContact" action="#" method="post">
+										<input type="hidden" name="id" value="<?php echo $contact->id; ?>" />
+										<input type="submit" class="delete-btn button tiny secondary alert" value="Delete" />
+								</form>
 							</ul>
 						</td>
 					</tr>
